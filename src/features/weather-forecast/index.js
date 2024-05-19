@@ -70,12 +70,14 @@ const WeatherForecast = ({ queryInfo }) => {
         dayName={queryInfo?.dayName}
         weatherInfo={currentWeather}
         date={currentDate}
+        time={queryInfo?.dayTime}
       />
       <WeatherCard
         dayName={queryInfo?.dayName}
         weatherInfo={nextWeather}
         date={nextDate}
         isNextDateCard={true}
+        time={queryInfo?.dayTime}
       />
     </div>
   );

@@ -6,6 +6,7 @@ import { getOrdinalSuffix, getWeatherConditionIcon } from "../../utils/helper";
 
 const WeatherCard = ({
   dayName,
+  time,
   date,
   weatherInfo,
   isNextDateCard = false,
@@ -42,7 +43,7 @@ const WeatherCard = ({
         </div>
       </div>
       <div className="w-full h-full mt-10">
-        <WeatherChart weatherInfo={weatherInfo} />
+        <WeatherChart weatherInfo={weatherInfo} time={time}/>
       </div>
     </div>
   );

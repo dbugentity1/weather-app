@@ -12,7 +12,7 @@ import {
   TimeScale,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { convertTo12HourFormat } from "../../utils/helper";
+import { convertTo12HourFormat, timeRanges } from "../../utils/helper";
 
 // Register Chart.js components
 ChartJS.register(
@@ -35,7 +35,7 @@ const extractChartData = (data) => {
   const filteredData = data.filter((item) => {
     const time = item.datetime.split(":");
     const hour = parseInt(time[0], 10);
-    return hour >= 11 && hour <= 20;
+    return hour >= 8 && hour <= 21;
   });
 
   const labels = filteredData.map((item) =>
@@ -76,7 +76,7 @@ const extractChartData = (data) => {
   };
 };
 
-const WeatherChart = ({ weatherInfo }) => {
+const WeatherChart = ({ weatherInfo, time }) => {
   const chartData = extractChartData(weatherInfo?.days?.[0]?.hours);
 
   if (!chartData) {
@@ -111,7 +111,24 @@ const WeatherChart = ({ weatherInfo }) => {
               title: {
                 display: true,
                 text: "Time",
-              },
+
+              },  
+              ticks: {
+                callback: function(value, index, ticks) {
+                  const label = this.getLabelForValue(value);
+                  if (timeRanges[time].includes(label)) {
+                    return label;
+                  }
+                  return label;
+                },
+                color: function(context) {
+                  const label = context.tick.label;
+                  if (timeRanges[time].includes(label)) {
+                    return 'black'; // Highlight color
+                  }
+                  return '#c9c9c9'; // Default color
+                }
+              }
             },
             y: {
               title: {
