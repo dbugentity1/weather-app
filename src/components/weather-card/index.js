@@ -2,7 +2,7 @@ import React from "react";
 
 import { RainIcon2, WindIcon } from "../../assets/icons";
 import WeatherChart from "../weather-chart";
-import { getWeatherConditionIcon } from "../../utils/helper";
+import { getOrdinalSuffix, getWeatherConditionIcon } from "../../utils/helper";
 
 const WeatherCard = ({
   dayName,
@@ -15,7 +15,7 @@ const WeatherCard = ({
       <p className="text-red-700 font-semibold my-4 text-lg">
         {isNextDateCard ? "Next" : "This"}{" "}
         <span className="italic text-cyan-500">{dayName}</span> the{" "}
-        <span className="italic text-cyan-500">{date?.getDate()}th</span>
+        <span className="italic text-cyan-500">{getOrdinalSuffix(date?.getDate())}</span>
       </p>
       <div className="flex gap-6 items-center ">
         {getWeatherConditionIcon(weatherInfo?.days?.[0]?.icon)}

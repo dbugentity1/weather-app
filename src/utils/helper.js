@@ -50,7 +50,7 @@ export async function getWeatherData(date, location) {
 }
 
 export const getFormattedDate = (date) => {
-  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate() + 1}`;
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 };
 
 
@@ -77,3 +77,15 @@ export const convertTo12HourFormat = (time) => {
         return <SunnyIcon height='100px' width='100px' />;
     }
   }
+
+  export function getOrdinalSuffix(n) {
+    let suffix = 'th';
+    if (n % 10 === 1 && n % 100 !== 11) {
+        suffix = 'st';
+    } else if (n % 10 === 2 && n % 100 !== 12) {
+        suffix = 'nd';
+    } else if (n % 10 === 3 && n % 100 !== 13) {
+        suffix = 'rd';
+    }
+    return n + suffix;
+}
