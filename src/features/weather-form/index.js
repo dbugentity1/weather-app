@@ -6,7 +6,7 @@ import useDebounce from "../../hooks/debounce-hooks";
 import { LocationIcon } from "../../assets/icons";
 
 const WeatherForm = ({ setQueryInfo }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const debouncedValue = useDebounce(inputValue, 500);
 
   const onInputChange = (e) => {
@@ -37,7 +37,7 @@ const WeatherForm = ({ setQueryInfo }) => {
   }, [debouncedValue, setQueryInfo]);
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 items-start md:items-center  justify-between pb-2 mb-8 md:mb-3 border-b-2 border-gray-600">
+    <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between pb-2 mb-8 md:mb-3 border-b-2 border-gray-600">
       <div className="flex gap-1 items-center">
         <LocationIcon />
         <input

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ErrorBoundary } from "react-error-boundary";
 
 import Header from './components/header';
-import WeatherForm from './components/weather-form';
+import WeatherForm from './features/weather-form';
 import WeatherForecast from './features/weather-forecast';
 
 function App() {
